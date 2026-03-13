@@ -3,7 +3,7 @@ import Image from "next/image";
 import { supabase } from "@/lib/supabase";
 import { Card } from "@/components/ui/card";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 const PREVIEW_LENGTH = 120;
 

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ slug: string }> };
 
