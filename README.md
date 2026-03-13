@@ -38,7 +38,7 @@ A personal portfolio site with a blog and an admin panel for managing content. T
 | **ChatGPT**          | Used to design the posts table schema and validate structure for Supabase.   |
 | **Supabase MCP**     | Connected the Supabase MCP server to interact with the database (tables, data, schema) from the IDE. |
 
-**Rough split:** ~70% of the code was written with AI assistance (Cursor + ChatGPT); the rest was written or adjusted manually (logic, wiring, env, and deployment).
+**Rough split:** ~80% of the code was written with AI assistance (Cursor + ChatGPT); the rest was written or adjusted manually (logic, wiring, env, and deployment).
 
 **Understanding:** I reviewed and understood the AI-generated code, adjusted it for this project, and used it alongside manual implementation for auth, routing, and styling.
 
