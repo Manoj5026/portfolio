@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, FolderKanban, BookOpen } from "lucide-react";
+import { Home, FolderKanban, BookOpen, Settings } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "/", label: "Home", icon: Home },
@@ -10,13 +11,24 @@ const NAV_LINKS = [
   { href: "/blog", label: "Blog", icon: BookOpen },
 ];
 
+const ADMIN_LINK = { href: "/admin", label: "Admin", icon: Settings };
+
 export default function Navbar() {
   const pathname = usePathname();
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    fetch("/api/admin/me")
+      .then((res) => setIsAdmin(res.ok))
+      .catch(() => setIsAdmin(false));
+  }, [pathname]);
+
+  const links = [...NAV_LINKS, ...(isAdmin ? [ADMIN_LINK] : [])];
 
   return (
     <nav className="sticky top-4 z-50 flex items-center justify-center w-full">
       <div className="bg-white/80 backdrop-blur-md border border-zinc-200 shadow-lg rounded-full px-6 py-2 flex items-center justify-center gap-4 min-w-[340px] max-w-full">
-        {NAV_LINKS.map(({ href, label, icon: Icon }) => {
+        {links.map(({ href, label, icon: Icon }) => {
           const isActive = pathname === href;
           return (
             <Link
